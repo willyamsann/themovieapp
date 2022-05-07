@@ -19,6 +19,18 @@ export class MoviesService {
     return this.httpClient.get<any>(url).pipe(retry(2));
   }
 
+  post(id: string) {
+    let obj = {
+      media_type: 'movie',
+      media_id: id,
+      favorite: true,
+    };
+
+    let url = `${this.urlMovieDb}/account/willyamsantos-11/favorite?api_key=${this.apiKey}`;
+
+    return this.httpClient.post(url, obj).pipe(retry(2));
+  }
+
   getByMovie(id: string): Observable<any> {
     let url = `${this.urlMovieDb}/movie/${id}?api_key=${this.apiKey}&language=pt-BR&page=1`;
 

@@ -22,6 +22,9 @@
   />
   <br />
   <br />
+  <button class="btn btn-primary" (click)="saveFavorite(filme.id)">
+    FAVORITAR
+  </button>
   <h5>Genero:{{ filme.genres[0]?.name }}</h5>
   <hr class="my-4" />
   <p>{{ filme.overview }}</p>

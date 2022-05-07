@@ -30,4 +30,10 @@ export class InformationComponent implements OnInit {
   goBack() {
     this.router.navigate(['/home']);
   }
+
+  saveFavorite(id: string) {
+    this.moviesService.post(id).subscribe((res) => {
+      console.log(res);
+    });
+  }
 }
