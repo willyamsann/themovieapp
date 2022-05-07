@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CardsComponent } from '../app/components/cards/cards.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MoviesService } from './services/movies.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [CardsComponent, HomeComponent, AppComponent],
+  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  providers: [MoviesService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
