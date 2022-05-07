@@ -1,0 +1,33 @@
+<div *ngIf="!isReady" class="alert alert-info text-center mt-3 animated fadeIn">
+  <h4 class="alert-heading">Carregando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">Espere porfavor</p>
+</div>
+
+<div *ngIf="isReady" class="jumbotron animated fadeIn">
+  <h1 class="display-4">{{ filme.title }}</h1>
+  <img
+    *ngIf="filme.poster_path"
+    class="card-img-top"
+    src="https://image.tmdb.org/t/p/original/{{ filme.poster_path }}"
+    alt="Card image cap"
+  />
+  <img
+    class="card-img-top"
+    *ngIf="!filme.poster_path"
+    src="https://www.genesisglobalschool.edu.in/wp-content/uploads/2016/09/noimage.jpg"
+    alt="Card image cap"
+  />
+  <br />
+  <br />
+  <h5>Genero:{{ filme.genres[0]?.name }}</h5>
+  <hr class="my-4" />
+  <p>{{ filme.overview }}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" (click)="goBack()" role="button"
+      >Voltar</a
+    >
+  </p>
+</div>

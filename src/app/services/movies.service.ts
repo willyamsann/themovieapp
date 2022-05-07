@@ -13,8 +13,14 @@ export class MoviesService {
   private urlMovieDb: string = 'https://api.themoviedb.org/3';
   constructor(private httpClient: HttpClient) {}
 
-  getMovies(): Observable<any> {
-    let url = `${this.urlMovieDb}/movie/popular?api_key=${this.apiKey}&language=pt-BR&page=1`;
+  getMovies(page: number): Observable<any> {
+    let url = `${this.urlMovieDb}/movie/popular?api_key=${this.apiKey}&language=pt-BR&page=${page}`;
+
+    return this.httpClient.get<any>(url).pipe(retry(2));
+  }
+
+  getByMovie(id: string): Observable<any> {
+    let url = `${this.urlMovieDb}/movie/${id}?api_key=${this.apiKey}&language=pt-BR&page=1`;
 
     return this.httpClient.get<any>(url).pipe(retry(2));
   }

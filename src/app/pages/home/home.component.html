@@ -1,4 +1,31 @@
-<div class="container">
+<div *ngIf="!isReady" class="alert alert-info text-center mt-3 animated fadeIn">
+  <h4 class="alert-heading">Carregando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">Espere porfavor</p>
+</div>
+<div *ngIf="isReady" class="container">
   <h1>Filmes Populares</h1>
   <app-cards [movies]="movies"> </app-cards>
 </div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" (click)="getMovies(page - 1)">Previous</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="getMovies(1)">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="getMovies(2)">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="getMovies(3)">3</a>
+    </li>
+    <li class="page-item" (click)="getMovies(page + 1)">
+      <a class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>

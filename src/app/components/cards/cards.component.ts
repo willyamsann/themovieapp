@@ -1,4 +1,5 @@
 import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   ModalDismissReasons,
   NgbModal,
@@ -16,7 +17,7 @@ export class CardsComponent {
   modalOptions: NgbModalOptions;
 
   closeResult = '';
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private router: Router) {
     this.modalOptions = { backdrop: 'static', keyboard: false };
   }
 
@@ -39,5 +40,9 @@ export class CardsComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  openInformation(id: string) {
+    this.router.navigate(['/information', { id }]);
   }
 }

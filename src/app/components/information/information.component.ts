@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from 'src/app/services/movies.service';
 @Component({
   selector: 'app-information',
@@ -9,11 +9,25 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class InformationComponent implements OnInit {
   title = 'themovieapp';
   filme: any;
+  isReady = false;
+
   constructor(
     private route: ActivatedRoute,
     private moviesService: MoviesService,
-    private location: Location
-  ) {}
+    private router: Router
+  ) {
+    console.log('es');
+    this.route.params.subscribe((res) => {
+      this.moviesService.getByMovie(res['id']).subscribe((movie) => {
+        this.filme = movie;
+        this.isReady = true;
+      });
+    });
+  }
 
   ngOnInit(): void {}
+
+  goBack() {
+    this.router.navigate(['/home']);
+  }
 }

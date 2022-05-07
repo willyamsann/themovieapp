@@ -8,17 +8,22 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class HomeComponent implements OnInit {
   title = 'themovieapp';
   movies: any = [];
+  page: number = 1;
+  isReady = false;
 
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.getMovies();
+    this.getMovies(this.page);
   }
 
-  getMovies() {
-    this.moviesService.getMovies().subscribe((datas: any) => {
+  getMovies(page: number) {
+    console.log(page);
+    this.page = page;
+    this.moviesService.getMovies(page).subscribe((datas: any) => {
       this.movies = datas?.results;
       console.log(datas);
+      this.isReady = true;
     });
   }
 }
