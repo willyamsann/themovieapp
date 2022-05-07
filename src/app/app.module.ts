@@ -8,10 +8,22 @@ import { FormsModule } from '@angular/forms';
 import { CardsComponent } from '../app/components/cards/cards.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MoviesService } from './services/movies.service';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InformationComponent } from './components/information/information.component';
 @NgModule({
-  declarations: [CardsComponent, HomeComponent, AppComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  declarations: [
+    CardsComponent,
+    HomeComponent,
+    InformationComponent,
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+  ],
   providers: [MoviesService],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,31 @@
+<ng-template
+  #information
+  let-modal
+  [config]="{ backdrop: false }"
+  style="z-index: -1"
+>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">Here I am!</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Ok
+    </button>
+  </div>
+</ng-template>
 <div class="row">
   <div class="card-columns">
     <div *ngFor="let movie of movies" class="card">
@@ -15,6 +43,9 @@
         />
         <br />
         <h5 class="card-title">{{ movie.title }}</h5>
+        <button class="btn btn-primary" (click)="openModalTs(information)">
+          Mais informarcoes
+        </button>
       </div>
     </div>
   </div>

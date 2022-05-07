@@ -9,7 +9,7 @@ import { Observable, retry } from 'rxjs';
   providedIn: 'root',
 })
 export class MoviesService {
-  private apiKey: string = '';
+  private apiKey: string = '630465ec43ac58b16360a94184292e7a';
   private urlMovieDb: string = 'https://api.themoviedb.org/3';
   constructor(private httpClient: HttpClient) {}
 
